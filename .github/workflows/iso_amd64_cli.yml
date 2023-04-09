@@ -48,6 +48,8 @@ jobs:
         sudo docker start work01 >/dev/null
         sleep 1
 
+        sudo docker exec --tty -e PATH=/bin:/sbin:/usr/bin:/usr/sbin work01 /bin/bash -c "useradd developer -m -g wheel"
+        sudo docker exec --tty -e PATH=/bin:/sbin:/usr/bin:/usr/sbin work01 /bin/bash -c "echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers"
         sudo docker exec --tty -e PATH=/bin:/sbin:/usr/bin:/usr/sbin work01 /bin/bash -c "chown -R developer /home/developer/EVOLINX"
 
         # Reinstall linux pkg so whe have modules back as needed ( Needs to be done twice as of hax were done for docker )
