@@ -55,6 +55,7 @@ jobs:
         sudo docker exec --tty -e PATH=/bin:/sbin:/usr/bin:/usr/sbin work01 /bin/bash -c "bottle --noconfirm --disable-download-timeout -Sy sudo"
 
         # Usual patching that needs to be done
+        sudo docker exec --tty -e PATH=/bin:/sbin:/usr/bin:/usr/sbin work01 /bin/bash -c "echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers"
         sudo docker exec --tty -e PATH=/bin:/sbin:/usr/bin:/usr/sbin work01 /bin/bash -c "useradd developer -m -g wheel"
         sudo docker exec --tty -e PATH=/bin:/sbin:/usr/bin:/usr/sbin work01 /bin/bash -c "chown -R developer /home/developer/EVOLINX"
 
